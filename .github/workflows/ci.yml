@@ -1,4 +1,4 @@
-name: GymMate AI Automated Test Suite (1500+ Test Cases)
+name: GymMate AI Automated Test Matrix (1500+ Test Cases)
 
 on:
   push:
@@ -7,8 +7,9 @@ on:
     branches: [ main, master ]
 
 jobs:
-  run-automated-test-suites:
-    name: Execute All Automated Test Suites (Selenium, Appium, Load, Frontend, Backend)
+  # 1. Selenium E2E Web Test Suite Job
+  selenium-e2e-tests:
+    name: 🌐 Selenium E2E Web Suite (300+ Tests)
     runs-on: ubuntu-latest
 
     steps:
@@ -20,20 +21,158 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 📦 Install Required Dependencies (openpyxl)
-        run: |
-          python -m pip install --upgrade pip
-          pip install openpyxl
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
 
-      - name: 🧪 Execute All 1,500+ Automated Test Cases
-        run: |
-          python run_all_tests.py
+      - name: 🧪 Execute 300+ Selenium E2E Test Cases
+        run: python testing/selenium_e2e_test.py
 
-      - name: 📊 Upload Excel Test Reports as Artifacts
+      - name: 📊 Upload Selenium Excel Report Artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gymmate-ai-excel-test-reports
+          name: selenium_e2e_results.xlsx
+          path: testing/selenium_e2e_results.xlsx
+          retention-days: 30
+
+  # 2. Appium Mobile Automation Test Suite Job
+  appium-mobile-tests:
+    name: 📱 Appium Mobile Suite (300+ Tests)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
+
+      - name: 🧪 Execute 300+ Appium Mobile Test Cases
+        run: python testing/appium_test.py
+
+      - name: 📊 Upload Appium Excel Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium_test_results.xlsx
+          path: testing/appium_test_results.xlsx
+          retention-days: 30
+
+  # 3. High-Throughput Load & Performance Test Suite Job
+  load-performance-tests:
+    name: ⚡ Load & Performance Suite (300+ Tests)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
+
+      - name: 🧪 Execute 300+ Load Test Scenarios
+        run: python testing/load_test.py
+
+      - name: 📊 Upload Load Test Excel Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load_test_results.xlsx
+          path: testing/load_test_results.xlsx
+          retention-days: 30
+
+  # 4. Frontend Web UI & Component Suite Job
+  frontend-ui-tests:
+    name: 🎨 Frontend UI Suite (300+ Tests)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
+
+      - name: 🧪 Execute 300+ Frontend UI Test Cases
+        run: python frontend_test/frontend_test.py
+
+      - name: 📊 Upload Frontend Excel Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend_test_results.xlsx
+          path: frontend_test/frontend_test_results.xlsx
+          retention-days: 30
+
+  # 5. Backend API & Service Database Suite Job
+  backend-api-tests:
+    name: ⚙️ Backend API & DB Suite (300+ Tests)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
+
+      - name: 🧪 Execute 300+ Backend API Test Cases
+        run: python backend_test/backend_test.py
+
+      - name: 📊 Upload Backend Excel Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend_test_results.xlsx
+          path: backend_test/backend_test_results.xlsx
+          retention-days: 30
+
+  # 6. Combined Master Verification & Full Excel Bundle Job
+  master-test-summary:
+    name: 🏆 Master Execution Summary (1500+ Tests Pass Verification)
+    needs: [selenium-e2e-tests, appium-mobile-tests, load-performance-tests, frontend-ui-tests, backend-api-tests]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install openpyxl
+        run: pip install openpyxl
+
+      - name: 🏆 Execute Master Test Runner Suite
+        run: python run_all_tests.py
+
+      - name: 📊 Upload Combined All-Suites Excel Bundle Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gymmate-ai-all-excel-reports-bundle
           path: |
             testing/selenium_e2e_results.xlsx
             testing/appium_test_results.xlsx
