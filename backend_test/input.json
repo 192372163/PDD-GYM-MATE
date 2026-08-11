@@ -1,0 +1,47 @@
+{
+  "project_name": "GymMate AI Backend Services & API Suite",
+  "environment": "Firebase Firestore / Cloud Functions / Groq AI API",
+  "backend_services": [
+    "Firebase Authentication API & OAuth Token Sync",
+    "Cloud Firestore User Profile & Plan Database Engine",
+    "Groq AI Nutrition & Fitness Plan Generation Service",
+    "Exercise Pose Detection Landmark & Rep Counter Pipeline",
+    "Flutter TTS Audio & Speech Recognition Service API",
+    "Hydration & Water Intake Tracker Async Storage Service",
+    "PDF Report Generator & Document Export Pipeline",
+    "Firebase Cloud Messaging Push Notification Dispatcher",
+    "Progress Analytics Metric Aggregation & Heatmap Database Engine"
+  ],
+  "api_endpoints": [
+    { "method": "POST", "path": "/api/v1/auth/google-signin", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/auth/phone-verify", "expected_status": 200 },
+    { "method": "GET", "path": "/api/v1/user/profile", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/planner/generate-ai-plan", "expected_status": 200 },
+    { "method": "GET", "path": "/api/v1/planner/active-plan", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/nutrition/generate-diet", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/workout/complete-day", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/water/update-log", "expected_status": 200 },
+    { "method": "POST", "path": "/api/v1/report/generate-pdf", "expected_status": 200 }
+  ],
+  "database_collections": [
+    "users",
+    "goal_plans",
+    "workout_history",
+    "nutrition_logs",
+    "water_logs",
+    "notifications"
+  ],
+  "test_dataset": {
+    "auth_payload": {
+      "uid": "usr_gymmate_8841",
+      "email": "chandra@gymmate.ai",
+      "token_expiry_sec": 3600
+    },
+    "plan_payload": {
+      "goal_title": "Six-Pack Development",
+      "duration_days": 90,
+      "daily_calorie_target": 2200,
+      "daily_water_target_liters": 3.5
+    }
+  }
+}

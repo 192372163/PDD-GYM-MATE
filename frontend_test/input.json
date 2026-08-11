@@ -1,0 +1,48 @@
+{
+  "project_name": "GymMate AI Frontend Web Application",
+  "environment": "Flutter Web / Chrome Driver",
+  "viewports": [
+    { "name": "Desktop 4K", "width": 3840, "height": 2160 },
+    { "name": "Desktop FHD", "width": 1920, "height": 1080 },
+    { "name": "Laptop HD", "width": 1366, "height": 768 },
+    { "name": "Tablet iPad Pro", "width": 1024, "height": 1366 },
+    { "name": "Mobile iPhone 15", "width": 393, "height": 852 }
+  ],
+  "theme_tokens": {
+    "background_dark": "#0F172A",
+    "card_surface": "#141724",
+    "primary_emerald": "#10B981",
+    "primary_cyan": "#06B6D4",
+    "accent_lime": "#76FF03",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#94A3B8"
+  },
+  "component_modules": [
+    "Auth Form Controls & Validation",
+    "Dashboard Navigation Drawer & Headers",
+    "90-Day Schedule Timeline Grid",
+    "Interactive Exercise Video Player",
+    "AI Nutrition Meal & Juice Cards",
+    "Water Intake Quick Tracker Pill",
+    "Progress Analytics Charts & PDF Export",
+    "Notifications Modal Bottom Sheet",
+    "User Profile Form Fields & Settings"
+  ],
+  "test_dataset": {
+    "sample_user": {
+      "name": "Chandra",
+      "email": "chandra@gymmate.ai",
+      "fitness_goal": "Muscle Building",
+      "daily_calories": 2200,
+      "daily_water_target": 3.5
+    },
+    "workout_focus_types": [
+      "Chest & Triceps",
+      "Legs & Core",
+      "Back & Biceps",
+      "Shoulders & Abs",
+      "HIIT & Cardio",
+      "Rest & Recovery"
+    ]
+  }
+}

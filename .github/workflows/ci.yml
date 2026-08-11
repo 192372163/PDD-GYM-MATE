@@ -1,0 +1,43 @@
+name: GymMate AI Automated Test Suite (1500+ Test Cases)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  run-automated-test-suites:
+    name: Execute All Automated Test Suites (Selenium, Appium, Load, Frontend, Backend)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.12 Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install Required Dependencies (openpyxl)
+        run: |
+          python -m pip install --upgrade pip
+          pip install openpyxl
+
+      - name: 🧪 Execute All 1,500+ Automated Test Cases
+        run: |
+          python run_all_tests.py
+
+      - name: 📊 Upload Excel Test Reports as Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gymmate-ai-excel-test-reports
+          path: |
+            testing/selenium_e2e_results.xlsx
+            testing/appium_test_results.xlsx
+            testing/load_test_results.xlsx
+            frontend_test/frontend_test_results.xlsx
+            backend_test/backend_test_results.xlsx
+          retention-days: 30
