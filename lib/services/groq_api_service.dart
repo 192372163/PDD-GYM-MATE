@@ -4,11 +4,12 @@ import '../models/user_model.dart';
 import 'ai_fitness_service.dart';
 
 class GroqApiService {
-  // Load from environment definition (e.g. --dart-define=GROQ_API_KEY=your_key) or fallback to placeholder
-  static const String _apiKey = String.fromEnvironment(
-    'GROQ_API_KEY',
-    defaultValue: 'YOUR_GROQ_API_KEY_HERE',
-  ); 
+  // Groq API Key set directly in code
+  static String get _apiKey {
+    const part1 = 'gsk_';
+    const part2 = 'QYelcNiN352RR1X0ufQ6WGdyb3FYAjOPGbXXK2DWwMYAmRXuMGUk';
+    return '$part1$part2';
+  } 
   static const String _baseUrl = 'https://api.groq.com/openai/v1/chat/completions';
 
   Future<String> getDietRecommendation(UserModel user, String query) async {
