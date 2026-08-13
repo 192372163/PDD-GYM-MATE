@@ -214,7 +214,10 @@ class GoalProgressDashboardView extends StatelessWidget {
                 ),
                 lineBarsData: [
                   LineChartBarData(
-                    spots: List.generate(plan.weightProgressHistory.length, (i) => FlSpot(i.toDouble(), plan.weightProgressHistory[i])),
+                    spots: List.generate(
+                      (plan.totalWorkoutDaysCompleted / 7).ceil().clamp(1, plan.weightProgressHistory.length),
+                      (i) => FlSpot(i.toDouble(), plan.weightProgressHistory[i]),
+                    ),
                     isCurved: true,
                     color: const Color(0xFF76FF03),
                     barWidth: 3.5,
@@ -272,7 +275,10 @@ class GoalProgressDashboardView extends StatelessWidget {
                 ),
                 lineBarsData: [
                   LineChartBarData(
-                    spots: List.generate(plan.bmiTrendHistory.length, (i) => FlSpot(i.toDouble(), plan.bmiTrendHistory[i])),
+                    spots: List.generate(
+                      (plan.totalWorkoutDaysCompleted / 7).ceil().clamp(1, plan.bmiTrendHistory.length),
+                      (i) => FlSpot(i.toDouble(), plan.bmiTrendHistory[i]),
+                    ),
                     isCurved: true,
                     color: const Color(0xFF00E5FF),
                     barWidth: 3.5,
@@ -393,7 +399,7 @@ class GoalProgressDashboardView extends StatelessWidget {
                 ),
                 lineBarsData: [
                   LineChartBarData(
-                    spots: List.generate(plan.weeklyProgressHistory.length, (i) => FlSpot(i.toDouble(), plan.weeklyProgressHistory[i])),
+                    spots: List.generate(plan.dynamicWeeklyProgress.length, (i) => FlSpot(i.toDouble(), plan.dynamicWeeklyProgress[i])),
                     isCurved: true,
                     color: const Color(0xFFE040FB),
                     barWidth: 3.5,

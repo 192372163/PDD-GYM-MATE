@@ -210,7 +210,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     'name': nameController.text.trim(),
                                     'photoUrl': photoController.text.trim().isNotEmpty
                                         ? photoController.text.trim()
-                                        : profile.photoUrl,
+                                        : null,
                                     'heightCm': newHeight,
                                     'weightKg': newWeight,
                                     'age': newAge,
@@ -383,7 +383,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 : null,
                             child: user.photoUrl == null || user.photoUrl!.isEmpty
                                 ? Text(
-                                    user.name.substring(0, 1).toUpperCase(),
+                                    user.name.trim().isNotEmpty ? user.name.trim()[0].toUpperCase() : 'A',
                                     style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Color(0xFF10B981)),
                                   )
                                 : null,

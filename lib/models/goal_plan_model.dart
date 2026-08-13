@@ -523,6 +523,58 @@ class GoalPlanModel {
         100;
   }
 
+  /// Dynamic weekly progress percentages for days of the week (Mon to Sun / Days 1-7).
+  /// Shows actual completion % for completed/past days, and 0.0 for future uncompleted days.
+  /// Dynamic weekly progress percentages for real days of the week (Mon to Sun).
+  /// Maps completed workout days to their actual day of week (1=Mon, ..., 7=Sun).
+  List<double> get dynamicWeeklyProgress {
+    final List<double> progress = List.filled(7, 0.0);
+    final now = DateTime.now();
+    // Monday of current week
+    final currentWeekMon = now.subtract(Duration(days: now.weekday - 1));
+    final startOfCurrentWeek = DateTime(currentWeekMon.year, currentWeekMon.month, currentWeekMon.day);
+
+    for (var day in workoutDays) {
+      if (day.isCompleted && day.completionDate != null) {
+        final compDate = day.completionDate!;
+        final compDayStart = DateTime(compDate.year, compDate.month, compDate.day);
+        final daysDiff = compDayStart.difference(startOfCurrentWeek).inDays;
+        if (daysDiff >= 0 && daysDiff < 7) {
+          // Map to 0-indexed weekday (0=Mon, ..., 6=Sun)
+          final weekdayIdx = compDate.weekday - 1;
+          progress[weekdayIdx] = 100.0;
+        }
+      }
+    }
+
+    // If no completionDate was recorded yet for completed days (e.g. legacy data),
+    // fallback to active day mapping up to current weekday
+    final hasAnyInThisWeek = progress.any((v) => v > 0);
+    if (!hasAnyInThisWeek) {
+      final activeIndex = currentActiveDayIndex.clamp(0, workoutDays.length - 1);
+      final currentWeekStart = (activeIndex ~/ 7) * 7;
+      final todayWeekdayIdx = now.weekday - 1; // 0=Mon, ..., 2=Wed
+
+      for (int i = 0; i < 7; i++) {
+        final dayIdx = currentWeekStart + i;
+        if (dayIdx < workoutDays.length && i <= todayWeekdayIdx) {
+          final day = workoutDays[dayIdx];
+          if (day.isCompleted) {
+            progress[i] = 100.0;
+          } else if (day.exercises.isNotEmpty) {
+            final completedIds = tracker.completedExerciseIds;
+            final doneCount = day.exercises.where((e) => completedIds.contains(e.id)).length;
+            if (doneCount > 0) {
+              progress[i] = ((doneCount / day.exercises.length) * 100.0).clamp(0.0, 100.0);
+            }
+          }
+        }
+      }
+    }
+
+    return progress;
+  }
+
   GoalPlanModel copyWith({
     String? id,
     String? userId,

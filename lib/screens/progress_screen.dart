@@ -613,14 +613,16 @@ Check out my workout and fitness progress on GymMate AI! 💪
   }
 
   Widget _buildWeeklyChart(GoalPlanModel plan) {
-    final history = plan.weeklyProgressHistory;
+    final history = plan.dynamicWeeklyProgress;
+    final todayWeekdayIdx = DateTime.now().weekday - 1; // 0=Mon, ..., 2=Wed
+
     final bars = List.generate(
-      history.length > 7 ? 7 : history.length,
+      7,
       (i) => BarChartGroupData(
         x: i,
         barRods: [
           BarChartRodData(
-            toY: history[i].clamp(0.0, 100.0),
+            toY: i <= todayWeekdayIdx ? history[i].clamp(0.0, 100.0) : 0.0,
             gradient: const LinearGradient(
               colors: [Color(0xFF10B981), Color(0xFF06B6D4)],
               begin: Alignment.bottomCenter,
@@ -703,8 +705,10 @@ Check out my workout and fitness progress on GymMate AI! 💪
 
   Widget _buildMonthlyTrendChart(GoalPlanModel plan) {
     final history = plan.weightProgressHistory;
+    final completedWeeksCount = (plan.totalWorkoutDaysCompleted / 7).ceil().clamp(1, history.length);
+    final visibleCount = completedWeeksCount;
     final spots = List.generate(
-      history.length > 12 ? 12 : history.length,
+      visibleCount,
       (i) => FlSpot(i.toDouble(), history[i]),
     );
 

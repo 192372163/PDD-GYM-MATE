@@ -1,0 +1,24 @@
+{
+  "name": "gymmate-ai-mobile-e2e-appium",
+  "version": "1.0.0",
+  "description": "Appium Mobile End-to-End Automated Testing Suite in Node.js for GymMate AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "generate-report": "node generate_excel_report.js"
+  },
+  "keywords": [
+    "appium",
+    "webdriverio",
+    "e2e-testing",
+    "mobile-testing",
+    "flutter-appium",
+    "excel-report"
+  ],
+  "author": "GymMate AI QA Team",
+  "license": "MIT",
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "webdriverio": "^8.30.0"
+  }
+}

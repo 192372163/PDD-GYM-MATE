@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../services/auth_service.dart';
 import '../services/firestore_service.dart';
 import '../services/goal_planner_service.dart';
+import '../services/notification_service.dart';
 import '../models/user_model.dart';
 import '../models/goal_plan_model.dart';
 
@@ -134,10 +135,66 @@ class _HomeScreenState extends State<HomeScreen> {
         _activePlan = plan;
         _isLoadingPlan = false;
       });
+
+      _checkMissedExercisesAlert(plan);
+      
       if (!_welcomePopupShown) {
         _welcomePopupShown = true;
         _showWelcomeBackModal();
       }
+    }
+  }
+
+  void _checkMissedExercisesAlert(GoalPlanModel? plan) {
+    if (plan == null) return;
+    final missedSummary = NotificationService().getYesterdayMissedSummary(plan);
+    if (missedSummary != null) {
+      Future.microtask(() {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: const Color(0xFF1E293B),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+              side: const BorderSide(color: Colors.redAccent, width: 1.5),
+            ),
+            duration: const Duration(seconds: 7),
+            content: Row(
+              children: [
+                const Icon(Icons.warning_amber_rounded, color: Colors.redAccent, size: 24),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        '⚠️ Missed Exercises Alert (Yesterday)',
+                        style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        missedSummary,
+                        style: const TextStyle(color: Colors.white70, fontSize: 11),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            action: SnackBarAction(
+              label: 'CATCH UP',
+              textColor: const Color(0xFF10B981),
+              onPressed: () {
+                setState(() => _currentIndex = 1);
+              },
+            ),
+          ),
+        );
+      });
     }
   }
 
@@ -391,9 +448,33 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined, color: Colors.white),
-            onPressed: () => NotificationsModal.show(context, plan: _activePlan),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.notifications_outlined, color: Colors.white),
+                onPressed: () => NotificationsModal.show(
+                  context,
+                  plan: _activePlan,
+                  onOpenWorkoutPlan: () {
+                    setState(() => _currentIndex = 1);
+                  },
+                ),
+              ),
+              if (NotificationService().hasMissedExercises(_activePlan))
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    decoration: const BoxDecoration(
+                      color: Colors.redAccent,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+            ],
           ),
           const SizedBox(width: 8),
         ],
@@ -459,7 +540,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           : null,
                       child: photoUrl == null || photoUrl.isEmpty
                           ? Text(
-                              userName.isNotEmpty ? userName[0].toUpperCase() : 'G',
+                              userName.trim().isNotEmpty ? userName.trim()[0].toUpperCase() : 'G',
                               style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
                             )
                           : null,

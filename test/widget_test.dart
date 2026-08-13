@@ -13,6 +13,6 @@ void main() {
     );
 
     expect(find.text('Notifications'), findsOneWidget);
-    expect(find.text('5 New'), findsOneWidget);
+    expect(find.textContaining('Total'), findsOneWidget);
   });
 }

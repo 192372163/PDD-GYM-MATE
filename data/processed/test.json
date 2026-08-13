@@ -1,0 +1,42 @@
+[
+  {
+    "text": "I want a chest workout for tomorrow",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Can you give me a leg day routine?",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Is whey protein shake safe for daily intake?",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "Give me a balanced diet chart for weight gain",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "What are the symptoms of dehydration during exercise?",
+    "intent": "water_intake_inquiry"
+  },
+  {
+    "text": "What is my ideal body weight for 175 cm height?",
+    "intent": "progress_tracking"
+  },
+  {
+    "text": "I am feeling demotivated with my slow progress",
+    "intent": "motivation"
+  },
+  {
+    "text": "What is the best way to speed up muscle recovery?",
+    "intent": "recovery_advice"
+  },
+  {
+    "text": "Your advice was super helpful, thanks!",
+    "intent": "feedback"
+  },
+  {
+    "text": "Who won the football world cup?",
+    "intent": "other"
+  }
+]

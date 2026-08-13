@@ -1,0 +1,118 @@
+[
+  {
+    "text": "What is the best exercise for back muscle growth?",
+    "intent": "workout_request"
+  },
+  {
+    "text": "What exercises build bigger biceps?",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Suggest an upper body workout for strength",
+    "intent": "workout_request"
+  },
+  {
+    "text": "How to do dumbbell shoulder press with proper form?",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Show me ab exercises to get six pack",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Give me a full body workout plan for beginners",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Can you build a weekly gym workout split for me?",
+    "intent": "workout_request"
+  },
+  {
+    "text": "Can you give me a vegetarian diet plan for 2000 calories?",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "Recommend keto diet meals for fat loss",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "What should I eat before and after workout?",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "How many macros should I consume to lose body fat?",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "Create a high protein meal plan for muscle gain",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "What is my daily caloric deficit for 0.5kg weekly loss?",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "Suggest healthy snacks under 200 calories",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "How much water should I drink per day?",
+    "intent": "water_intake_inquiry"
+  },
+  {
+    "text": "Should I drink water during intense workout sessions?",
+    "intent": "water_intake_inquiry"
+  },
+  {
+    "text": "Calculate my daily hydration requirement",
+    "intent": "water_intake_inquiry"
+  },
+  {
+    "text": "How do I calculate my current BMI and TDEE?",
+    "intent": "progress_tracking"
+  },
+  {
+    "text": "Why is my weight scale not changing after 2 weeks?",
+    "intent": "progress_tracking"
+  },
+  {
+    "text": "When will I reach my target weight of 65 kg?",
+    "intent": "progress_tracking"
+  },
+  {
+    "text": "How to stay consistent with gym and diet routine?",
+    "intent": "motivation"
+  },
+  {
+    "text": "Give me some fitness motivation to keep going",
+    "intent": "motivation"
+  },
+  {
+    "text": "How to treat lower back stiffness after deadlifts?",
+    "intent": "recovery_advice"
+  },
+  {
+    "text": "Should I work out if I still feel muscle soreness?",
+    "intent": "recovery_advice"
+  },
+  {
+    "text": "My legs are extremely sore after squat day",
+    "intent": "recovery_advice"
+  },
+  {
+    "text": "Hello, how can you assist me today?",
+    "intent": "greeting"
+  },
+  {
+    "text": "Hi GymMate, hello coach!",
+    "intent": "greeting"
+  },
+  {
+    "text": "This diet plan isn't working well for me",
+    "intent": "feedback"
+  },
+  {
+    "text": "What is the weather today?",
+    "intent": "other"
+  }
+]

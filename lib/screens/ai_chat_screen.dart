@@ -146,7 +146,16 @@ class _AIChatScreenState extends State<AIChatScreen> {
     }
 
     final userContext = _userProfile ?? UserModel(uid: '', name: 'Athlete', email: '');
-    final response = await _groqApiService.getDietRecommendation(userContext, promptWithContext);
+    final historyPayload = _messages
+        .take(_messages.length - 1)
+        .map((m) => {'role': m.isUser ? 'user' : 'assistant', 'content': m.text})
+        .toList();
+
+    final response = await _groqApiService.getDietRecommendation(
+      userContext, 
+      promptWithContext, 
+      history: historyPayload
+    );
 
     if (!mounted) return;
     setState(() {

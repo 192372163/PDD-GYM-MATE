@@ -1,0 +1,30 @@
+[
+  {
+    "text": "Need a fast 20 minute home HIIT workout",
+    "intent": "workout_request"
+  },
+  {
+    "text": "I weigh 70 kg and my goal is weight loss",
+    "intent": "diet_plan_request"
+  },
+  {
+    "text": "Is 3 liters of water enough for my weight?",
+    "intent": "water_intake_inquiry"
+  },
+  {
+    "text": "How to measure body fat percentage at home?",
+    "intent": "progress_tracking"
+  },
+  {
+    "text": "I feel lazy today, persuade me to exercise",
+    "intent": "motivation"
+  },
+  {
+    "text": "How many hours of sleep do I need for optimal recovery?",
+    "intent": "recovery_advice"
+  },
+  {
+    "text": "Hey there! Good morning",
+    "intent": "greeting"
+  }
+]

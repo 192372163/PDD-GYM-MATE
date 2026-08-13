@@ -1,0 +1,56 @@
+[
+  { "text": "I want a chest workout for tomorrow", "intent": "workout_request" },
+  { "text": "Can you give me a leg day routine?", "intent": "workout_request" },
+  { "text": "Suggest an upper body workout for strength", "intent": "workout_request" },
+  { "text": "What exercises build bigger biceps?", "intent": "workout_request" },
+  { "text": "Need a fast 20 minute home HIIT workout", "intent": "workout_request" },
+  { "text": "Show me ab exercises to get six pack", "intent": "workout_request" },
+  { "text": "Give me a full body workout plan for beginners", "intent": "workout_request" },
+  { "text": "What is the best exercise for back muscle growth?", "intent": "workout_request" },
+  { "text": "How to do dumbbell shoulder press with proper form?", "intent": "workout_request" },
+  { "text": "Can you build a weekly gym workout split for me?", "intent": "workout_request" },
+
+  { "text": "I weigh 70 kg and my goal is weight loss", "intent": "diet_plan_request" },
+  { "text": "Create a high protein meal plan for muscle gain", "intent": "diet_plan_request" },
+  { "text": "What should I eat before and after workout?", "intent": "diet_plan_request" },
+  { "text": "Can you give me a vegetarian diet plan for 2000 calories?", "intent": "diet_plan_request" },
+  { "text": "How many macros should I consume to lose body fat?", "intent": "diet_plan_request" },
+  { "text": "Recommend keto diet meals for fat loss", "intent": "diet_plan_request" },
+  { "text": "Is whey protein shake safe for daily intake?", "intent": "diet_plan_request" },
+  { "text": "Suggest healthy snacks under 200 calories", "intent": "diet_plan_request" },
+  { "text": "What is my daily caloric deficit for 0.5kg weekly loss?", "intent": "diet_plan_request" },
+  { "text": "Give me a balanced diet chart for weight gain", "intent": "diet_plan_request" },
+
+  { "text": "How much water should I drink per day?", "intent": "water_intake_inquiry" },
+  { "text": "Is 3 liters of water enough for my weight?", "intent": "water_intake_inquiry" },
+  { "text": "Calculate my daily hydration requirement", "intent": "water_intake_inquiry" },
+  { "text": "Should I drink water during intense workout sessions?", "intent": "water_intake_inquiry" },
+  { "text": "What are the symptoms of dehydration during exercise?", "intent": "water_intake_inquiry" },
+
+  { "text": "How do I calculate my current BMI and TDEE?", "intent": "progress_tracking" },
+  { "text": "What is my ideal body weight for 175 cm height?", "intent": "progress_tracking" },
+  { "text": "When will I reach my target weight of 65 kg?", "intent": "progress_tracking" },
+  { "text": "How to measure body fat percentage at home?", "intent": "progress_tracking" },
+  { "text": "Why is my weight scale not changing after 2 weeks?", "intent": "progress_tracking" },
+
+  { "text": "I am feeling demotivated with my slow progress", "intent": "motivation" },
+  { "text": "Give me some fitness motivation to keep going", "intent": "motivation" },
+  { "text": "How to stay consistent with gym and diet routine?", "intent": "motivation" },
+  { "text": "I feel lazy today, persuade me to exercise", "intent": "motivation" },
+
+  { "text": "My legs are extremely sore after squat day", "intent": "recovery_advice" },
+  { "text": "How to treat lower back stiffness after deadlifts?", "intent": "recovery_advice" },
+  { "text": "What is the best way to speed up muscle recovery?", "intent": "recovery_advice" },
+  { "text": "Should I work out if I still feel muscle soreness?", "intent": "recovery_advice" },
+  { "text": "How many hours of sleep do I need for optimal recovery?", "intent": "recovery_advice" },
+
+  { "text": "Hi GymMate, hello coach!", "intent": "greeting" },
+  { "text": "Hey there! Good morning", "intent": "greeting" },
+  { "text": "Hello, how can you assist me today?", "intent": "greeting" },
+
+  { "text": "Your advice was super helpful, thanks!", "intent": "feedback" },
+  { "text": "This diet plan isn't working well for me", "intent": "feedback" },
+
+  { "text": "What is the weather today?", "intent": "other" },
+  { "text": "Who won the football world cup?", "intent": "other" }
+]

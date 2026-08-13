@@ -94,7 +94,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
         email: authUser.email ?? '',
         photoUrl: _photoUrlController.text.trim().isNotEmpty
             ? _photoUrlController.text.trim()
-            : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80',
+            : null,
         age: age,
         gender: _selectedGender,
         heightCm: height,
